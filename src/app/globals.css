@@ -7,29 +7,10 @@ body {
   color: #ffffff;
 }
 
+/* Institutional Terminal Grid Background */
 .bg-terminal-grid {
   background-image: 
     linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
-}
-/* Watermark Placement for Logs Container */
-.terminal-watermark-bg {
-  position: relative;
-}
-.terminal-watermark-bg::before {
-  content: "/\\_/\\\n( o.o )\n > ^ <";
-  white-space: pre;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #FF7B00;
-  opacity: 0.10;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 1.2;
-  pointer-events: none;
-  z-index: 0;
-  text-align: center;
 }
