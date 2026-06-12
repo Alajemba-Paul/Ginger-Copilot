@@ -81,8 +81,12 @@ export default function GingerDashboard() {
           <button onClick={() => setCurrentView('yield')} className={`px-4 py-2 text-xs rounded transition-all ${currentView === 'yield' ? 'bg-[#FF7B00] text-black font-bold' : 'text-gray-400'}`}>📊 LP Router</button>
         </nav>
         <div className="grid grid-cols-2 gap-2 w-full md:flex md:w-auto">
-          <button onClick={handleToggleAgent} className={`px-3 py-2 border rounded text-[10px] font-bold ${agentStatus === 'online' ? 'border-[#00FF00] text-[#00FF00]' : 'border-gray-700 text-gray-400'}`}>AGENT: {agentStatus === 'online' ? 'ON' : 'OFF'}</button>
-          <button onClick={handleToggleLedger} className={`px-3 py-2 border rounded text-[10px] font-bold ${ledgerStatus === 'ready' ? 'border-[#FF7B00] text-[#FF7B00]' : 'border-gray-700 text-gray-400'}`}>ENCLAVE: {ledgerStatus === 'ready' ? 'ACT' : 'DISC'}</button>
+          <button onClick={handleToggleAgent} className={`px-3 py-2 border rounded text-[10px] font-bold ${agentStatus === 'online' ? 'border-[#00FF00] text-[#00FF00]' : 'border-gray-700 text-gray-400'}`}>
+            AGENT: {agentStatus === 'online' ? 'ON' : 'OFF'}
+          </button>
+          <button onClick={handleToggleLedger} className={`px-3 py-2 border rounded text-[10px] font-bold ${ledgerStatus === 'ready' ? 'border-[#FF7B00] text-[#FF7B00]' : 'border-gray-700 text-gray-400'}`}>
+            LEDGER: {ledgerStatus === 'ready' ? 'READY' : 'DISC'}
+          </button>
         </div>
       </header>
 
@@ -98,18 +102,31 @@ export default function GingerDashboard() {
             <button onClick={handleExecuteIntent} className="w-full py-3 bg-[#FF7B00] text-black font-bold text-sm uppercase rounded hover:bg-orange-600 transition-all">Execute Intent</button>
           </div>
         </div>
+        
+        {/* LOG PANEL FRAMEWORK CONTAINER */}
         <div className="w-full md:w-80 flex flex-col bg-black/95 border-t md:border-t-0 md:border-l border-gray-900 h-64 md:h-full z-10 backdrop-blur-md">
-          <div className="p-4 flex flex-col items-center justify-center border-b border-gray-900">
-             <pre className="text-[#FF7B00] text-[10px] font-bold">{"/\\_/\\  ( o.o )  > ^ <"}</pre>
+          <div className="p-4 border-b border-gray-900 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
+             Diagnostic Stream (TCP // 5000)
           </div>
-          <div className="flex-1 overflow-y-auto p-3 space-y-2">
-            {logs.map((log, index) => (
-              <div key={index} className={`font-mono text-[10px] ${log.includes('[ERROR]') ? 'text-red-500' : 'text-gray-400'}`}>
-                <span className="opacity-25 mr-2">[{new Date().toLocaleTimeString()}]</span>
-                {log}
-              </div>
-            ))}
-            <div ref={endOfLogsRef} />
+          
+          {/* THE LOG CONTENT SCREEN LAYER WITH THE CSS BACKGROUND MASCOT */}
+          <div className="flex-1 overflow-y-auto p-3 space-y-2 terminal-watermark-bg">
+            <div className="relative z-10 space-y-2">
+              {logs.map((log, index) => {
+                const upperLog = log.toUpperCase();
+                const isError = upperLog.includes('[ERROR]');
+                const isSuccess = upperLog.includes('SUCCESS') || upperLog.includes('ONLINE') || upperLog.includes('READY') || upperLog.includes('ACTIVE');
+                const isGinger = upperLog.includes('[GINGER]');
+                
+                return (
+                  <div key={index} className={`font-mono text-[10px] ${isError ? 'text-red-500' : isSuccess ? 'text-[#00FF00]' : isGinger ? 'text-[#FF7B00]' : 'text-gray-400'}`}>
+                    <span className="opacity-25 mr-2">[{new Date().toLocaleTimeString()}]</span>
+                    {log}
+                  </div>
+                );
+              })}
+              <div ref={endOfLogsRef} />
+            </div>
           </div>
         </div>
       </main>
