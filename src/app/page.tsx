@@ -9,7 +9,8 @@ export default function GingerDashboard() {
   const { logs, addLog } = useGingerLogs();
 
   return (
-    <div className="flex h-screen bg-[#0A0A0A] text-white font-mono">
+    // Updated this line to flex-col on mobile, flex-row on desktop
+    <div className="flex flex-col md:flex-row h-screen bg-[#0A0A0A] text-white font-mono overflow-hidden">
       <ControlPanel addLog={addLog} />
       <TerminalLog logs={logs} />
     </div>
