@@ -122,9 +122,9 @@ export default function GingerDashboard() {
         {/* Background Grid */}
         <div className="absolute inset-0 bg-terminal-grid z-0"></div>
 
-        {/* ASCII Cat Watermark */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-          <pre className="text-[#FF7B00] text-sm md:text-base font-bold animate-cat">
+        {/* MASSIVE ASCII Cat Watermark */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5] overflow-hidden">
+          <pre className="text-[#FF7B00] text-[40px] md:text-[80px] leading-[1.1] font-bold animate-cat">
 {`
    /\\_/\\
   ( o.o )
