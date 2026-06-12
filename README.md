@@ -1,4 +1,3 @@
-```markdown
 # Ginger Copilot 🐈⬛
 
 An institutional-grade Agentic Intent-Solver for the Injective Ecosystem, featuring strict hardware-enforced execution via Ledger DMK. Named in honor of Eric Chen's cat.
@@ -61,6 +60,4 @@ Ginger Copilot operates on a strict separation of concerns between intelligence 
  * /src/hooks: Centralized state management for terminal logs and UI updates.
 ## 🛡️ Security Note
 This application enforces a strict Human-in-the-Loop (HITL) model. The agent runtime is fundamentally incapable of signing transactions on its own. All actions must pass through the Ledger DMK pipeline.
-```
-
 ```
