@@ -7,7 +7,6 @@ body {
   color: #ffffff;
 }
 
-/* Institutional Terminal Grid Background */
 .bg-terminal-grid {
   background-image: 
     linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
@@ -15,13 +14,13 @@ body {
   background-size: 32px 32px;
 }
 
-/* Ginger Cat Watermark Animation */
+/* Fixed Overlay Animation */
 @keyframes catFade {
-  0% { opacity: 0; transform: scale(0.5); }
-  20% { opacity: 0.8; transform: scale(1); }
-  100% { opacity: 0.15; transform: scale(2.5); }
+  0% { opacity: 0; transform: scale(0.9); }
+  20% { opacity: 0.8; transform: scale(1.1); }
+  100% { opacity: 0.35; transform: scale(1); }
 }
 
 .animate-cat {
-  animation: catFade 4s ease-in-out forwards;
+  animation: catFade 3s ease-in-out forwards;
 }
