@@ -100,7 +100,7 @@ export default function GingerDashboard() {
         </div>
         <div className="w-full md:w-80 flex flex-col bg-black/95 border-t md:border-t-0 md:border-l border-gray-900 h-64 md:h-full z-10 backdrop-blur-md">
           <div className="p-4 flex flex-col items-center justify-center border-b border-gray-900">
-             <pre className="text-[#FF7B00] text-[10px] font-bold">/\\_/\\  ( o.o )  > ^ <</pre>
+             <pre className="text-[#FF7B00] text-[10px] font-bold">{"/\\_/\\  ( o.o )  > ^ <"}</pre>
           </div>
           <div className="flex-1 overflow-y-auto p-3 space-y-2">
             {logs.map((log, index) => (
@@ -115,4 +115,4 @@ export default function GingerDashboard() {
       </main>
     </div>
   );
-      }
+}
