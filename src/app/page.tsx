@@ -102,7 +102,8 @@ export default function GingerDashboard() {
             <button onClick={handleExecuteIntent} className="w-full py-3 bg-[#FF7B00] text-black font-bold text-sm uppercase rounded hover:bg-orange-600 transition-all">Execute Intent</button>
           </div>
         </div>
-                {/* LOG PANEL FRAMEWORK CONTAINER */}
+        
+        {/* LOG PANEL FRAMEWORK CONTAINER */}
         <div className="w-full md:w-80 flex flex-col bg-black/95 border-t md:border-t-0 md:border-l border-gray-900 h-64 md:h-full z-10 backdrop-blur-md">
           <div className="p-4 border-b border-gray-900 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
              Diagnostic Stream (TCP // 5000)
@@ -111,7 +112,7 @@ export default function GingerDashboard() {
           {/* THE LOG CONTENT SCREEN LAYER */}
           <div className="flex-1 overflow-y-auto p-3 space-y-2 relative">
             
-            {/* BULLETPROOF BULK NATIVE ASCII CAT BACKGROUND LAYER */}
+            {/* INLINE ASCII CAT BACKGROUND LAYER */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
               <pre className="text-[#FF7B00] text-xs font-bold opacity-10 leading-tight text-center select-none">
 {` /\\_/\\
@@ -140,3 +141,7 @@ export default function GingerDashboard() {
 
           </div>
         </div>
+      </main>
+    </div>
+  );
+}
