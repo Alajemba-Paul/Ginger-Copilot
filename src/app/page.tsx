@@ -72,7 +72,7 @@ export default function GingerDashboard() {
           </div>
         </div>
         
-        {/* Menu Buttons: Wrapped on mobile */}
+        {/* Menu Buttons */}
         <nav className="flex flex-wrap justify-center gap-2 w-full md:w-auto bg-black border border-gray-900 rounded p-1">
           <button 
             onClick={() => setCurrentView('staking')}
@@ -94,15 +94,15 @@ export default function GingerDashboard() {
           </button>
         </nav>
 
-        {/* Connection Actions: Grid on mobile */}
-        <div className="grid grid-cols-2 md:flex gap-2 w-full md:w-auto">
+        {/* Connection Actions */}
+        <div className="grid grid-cols-2 gap-2 w-full md:flex md:w-auto">
           <button 
             onClick={handleConnectAgent}
             disabled={agentStatus === 'online'}
             className={`flex items-center justify-center gap-2 px-3 py-2 border rounded text-[10px] md:text-xs font-bold transition-all ${agentStatus === 'online' ? 'border-[#00FF00] text-[#00FF00] bg-[#00FF00]/10' : 'border-gray-700 text-gray-400 hover:bg-gray-900'}`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${agentStatus === 'online' ? 'bg-[#00FF00]' : agentStatus === 'connecting' ? 'bg-yellow-500 animate-pulse' : 'bg-red-500'}`} />
-            AGENT: {agentStatus === 'online' ? 'ON' : 'CONNECT'}
+            {agentStatus === 'online' ? 'AGENT ONLINE' : 'CONNECT AGENT'}
           </button>
 
           <button 
@@ -111,7 +111,7 @@ export default function GingerDashboard() {
             className={`flex items-center justify-center gap-2 px-3 py-2 border rounded text-[10px] md:text-xs font-bold transition-all ${ledgerStatus === 'ready' ? 'border-[#FF7B00] text-[#FF7B00] bg-[#FF7B00]/10' : 'border-gray-700 text-gray-400 hover:bg-gray-900'}`}
           >
             <span className={`w-1.5 h-1.5 rounded-full ${ledgerStatus === 'ready' ? 'bg-[#FF7B00]' : ledgerStatus === 'connecting' ? 'bg-yellow-500 animate-pulse' : 'bg-red-500'}`} />
-            ENCLAVE: {ledgerStatus === 'ready' ? 'ACTIVE' : 'CONNECT'}
+            {ledgerStatus === 'ready' ? 'ENCLAVE READY' : 'CONNECT LEDGER'}
           </button>
         </div>
       </header>
@@ -124,29 +124,25 @@ export default function GingerDashboard() {
 
         {/* ASCII Cat Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-          <pre className="text-[#FF7B00] text-[10px] md:text-xs leading-[1.1] font-bold animate-cat">
+          <pre className="text-[#FF7B00] text-sm md:text-base font-bold animate-cat">
 {`
-   /\\_..._/\\
-  / o . o \\
- ( == ^ == )
-  )       (
- (         )
-( (  ) (  ) )
-(__(__)_(__)__)
+   /\\_/\\
+  ( o.o )
+   > ^ <
 `}
           </pre>
         </div>
 
         {/* Active Canvas Context */}
         <div className="flex-1 p-4 md:p-12 flex flex-col justify-center items-center z-10 overflow-y-auto">
-          <div className="max-w-2xl w-full bg-[#0d0d0d]/90 backdrop-blur-md p-8 md:p-12 border border-gray-900 rounded shadow-[0_0_40px_rgba(0,0,0,0.8)]">
-            <span className="text-xs text-[#FF7B00] uppercase tracking-widest font-bold">Injective Framework Engine</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          <div className="max-w-2xl w-full bg-[#0d0d0d]/80 backdrop-blur-sm p-6 md:p-12 border border-gray-900 rounded shadow-[0_0_40px_rgba(0,0,0,0.8)]">
+            <span className="text-[10px] md:text-xs text-[#FF7B00] uppercase tracking-widest font-bold">Injective Framework Engine</span>
+            <h2 className="text-2xl md:text-4xl font-bold mt-2 mb-3">
               {currentView === 'staking' && 'Staking Auto-Compounder'}
               {currentView === 'sniper' && 'BuyBack Sniper Vault'}
               {currentView === 'yield' && 'Dynamic LP Optimizer'}
             </h2>
-            <p className="text-sm text-gray-400 mb-10 leading-relaxed h-16 md:h-12">
+            <p className="text-[11px] md:text-sm text-gray-400 mb-6 leading-relaxed min-h-[3rem] md:min-h-[4rem]">
               {currentView === 'staking' && 'Injective MCP tracking for pending validator allocations. Bundles processing streams into isolated CosmWasm structural chains.'}
               {currentView === 'sniper' && 'Simulated high-frequency order matrix execution parameters. Generates instant execution boundaries requiring atomic sign confirmation.'}
               {currentView === 'yield' && 'Queries localized state logs across Mito algorithmic vaults and Neptune debt architecture matrices.'}
@@ -154,7 +150,7 @@ export default function GingerDashboard() {
             
             <button 
               onClick={handleExecuteIntent}
-              className="w-full py-4 bg-[#FF7B00] text-black font-bold text-lg tracking-wider uppercase rounded hover:bg-orange-600 transition-all shadow-[0_0_20px_rgba(255,123,0,0.25)]"
+              className="w-full py-3 md:py-4 bg-[#FF7B00] text-black font-bold text-sm md:text-lg tracking-wider uppercase rounded hover:bg-orange-600 transition-all shadow-[0_0_20px_rgba(255,123,0,0.25)]"
             >
               Execute Submodule Intent
             </button>
@@ -163,13 +159,13 @@ export default function GingerDashboard() {
 
         {/* Terminal Log View */}
         <div className="w-full md:w-96 flex flex-col bg-black/95 border-t md:border-t-0 md:border-l border-gray-900 h-64 md:h-full z-10 backdrop-blur-md">
-          <div className="p-4 border-b border-gray-900 text-[10px] text-gray-500 uppercase tracking-widest flex justify-between font-bold">
+          <div className="p-3 md:p-4 border-b border-gray-900 text-[10px] text-gray-500 uppercase tracking-widest flex justify-between font-bold">
             <span>Terminal Diagnostic Stream</span>
             <span>TCP // 5000</span>
           </div>
-          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+          <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3">
             {logs.map((log, index) => (
-              <div key={index} className={`font-mono text-xs leading-relaxed break-words ${log.includes('[ERROR]') || log.includes('[REJECTED]') ? 'text-red-500' : log.includes('SUCCESS') || log.includes('ONLINE') || log.includes('ACTIVE') ? 'text-[#00FF00]' : log.includes('[GINGER]') ? 'text-[#FF7B00]' : 'text-gray-400'}`}>
+              <div key={index} className={`font-mono text-[10px] md:text-xs leading-relaxed break-words ${log.includes('[ERROR]') || log.includes('[REJECTED]') ? 'text-red-500' : log.includes('SUCCESS') || log.includes('ONLINE') || log.includes('READY') || log.includes('ACTIVE') ? 'text-[#00FF00]' : log.includes('[GINGER]') ? 'text-[#FF7B00]' : 'text-gray-400'}`}>
                 <span className="opacity-25 mr-2 font-sans">[{new Date().toLocaleTimeString()}]</span>
                 {log}
               </div>
