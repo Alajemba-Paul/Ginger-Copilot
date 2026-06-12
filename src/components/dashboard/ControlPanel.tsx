@@ -30,7 +30,7 @@ export default function ControlPanel({ addLog }: ControlPanelProps) {
   };
 
   return (
-    <div className="w-1/3 p-6 border-r border-gray-800 flex flex-col justify-between">
+    <div className="w-full md:w-1/3 p-6 border-b md:border-b-0 md:border-r border-gray-800 flex flex-col justify-between">
       <div>
         <h1 className="text-2xl font-bold mb-2 text-[#FF7B00]">GINGER COPILOT</h1>
         <p className="text-sm text-gray-400 mb-8">Agentic Intent-Solver for Injective.</p>
@@ -59,7 +59,7 @@ export default function ControlPanel({ addLog }: ControlPanelProps) {
         </div>
       </div>
       
-      <div className="text-xs text-gray-600">
+      <div className="text-xs text-gray-600 mt-4 md:mt-0">
         <p>Hardware Guardrail: Active</p>
         <p>Speculos Target: localhost:5000</p>
       </div>
