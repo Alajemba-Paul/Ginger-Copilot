@@ -68,7 +68,7 @@ export default function GingerDashboard() {
     else if (currentView === 'yield') {
       await mcpClient.queryOptimalYields();
     }
-  };
+  
 
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-[#0A0A0A] font-mono text-white">
