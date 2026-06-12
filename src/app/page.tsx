@@ -9,9 +9,9 @@ import { LedgerDMKPipeline } from '@/core/ledger/dmk-pipeline';
 export default function GingerDashboard() {
   const { logs, addLog } = useGingerLogs();
   
-  const [currentView, setCurrentView] = useState<'staking' | 'sniper' | 'yield'>('staking');
-  const [agentStatus, setAgentStatus] = useState<'offline' | 'connecting' | 'online'>('offline');
-  const [ledgerStatus, setLedgerStatus] = useState<'disconnected' | 'connecting' | 'ready'>('disconnected');
+  const [currentView, setCurrentView] = useState('staking');
+  const [agentStatus, setAgentStatus] = useState('offline');
+  const [ledgerStatus, setLedgerStatus] = useState('disconnected');
 
   const mcpClient = new InjectiveMCPClient(addLog);
   const txBuilder = new TxBuilder(addLog);
@@ -68,6 +68,9 @@ export default function GingerDashboard() {
     }
   };
 
+  // Bulletproof ASCII Cat locked into a raw string
+  const catWatermark = " /\\_/\\\n( o.o )\n > ^ <";
+
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-[#0A0A0A] font-mono text-white">
       <header className="bg-[#050505] border-b border-gray-800 p-4 z-20 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -92,6 +95,7 @@ export default function GingerDashboard() {
 
       <main className="flex-1 flex flex-col md:flex-row relative overflow-hidden">
         <div className="absolute inset-0 bg-terminal-grid z-0"></div>
+        
         <div className="flex-1 p-4 md:p-12 flex flex-col justify-center items-center z-10">
           <div className="max-w-2xl w-full bg-[#0d0d0d]/80 backdrop-blur-sm p-8 border border-gray-900 rounded shadow-2xl">
             <h2 className="text-2xl font-bold mb-3">
@@ -103,25 +107,19 @@ export default function GingerDashboard() {
           </div>
         </div>
         
-                {/* LOG PANEL FRAMEWORK CONTAINER */}
         <div className="w-full md:w-80 flex flex-col bg-black/95 border-t md:border-t-0 md:border-l border-gray-900 h-64 md:h-full z-10 backdrop-blur-md">
-          <div className="p-4 border-b border-gray-900 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
+          <div className="p-4 border-b border-gray-900 text-[10px] text-gray-500 uppercase tracking-widest font-bold z-20">
              Diagnostic Stream (TCP // 5000)
           </div>
           
-          {/* THE LOG CONTENT SCREEN LAYER */}
           <div className="flex-1 overflow-y-auto p-3 space-y-2 relative min-h-0">
-            
             {/* FIXED LAYER NATIVE ASCII CAT BACKGROUND */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 w-full text-center">
-              <pre className="text-[#FF7B00] text-xs font-bold opacity-20 block leading-normal select-none">
-{` /\\_/\\
-( o.o )
- > ^ <`}
+              <pre className="text-[#FF7B00] text-xs font-bold opacity-20 block leading-tight select-none">
+                {catWatermark}
               </pre>
             </div>
 
-            {/* REAL SCROLLING TEXT LOG ENTRIES ON TOP */}
             <div className="relative z-10 space-y-2">
               {logs.map((log, index) => {
                 const upperLog = log.toUpperCase();
@@ -138,6 +136,9 @@ export default function GingerDashboard() {
               })}
               <div ref={endOfLogsRef} />
             </div>
-
           </div>
         </div>
+      </main>
+    </div>
+  );
+}
