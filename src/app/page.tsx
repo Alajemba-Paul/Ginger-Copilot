@@ -68,7 +68,6 @@ export default function GingerDashboard() {
     }
   };
 
-  // Bulletproof ASCII Cat locked into a raw string
   const catWatermark = " /\\_/\\\n( o.o )\n > ^ <";
 
   return (
@@ -96,30 +95,39 @@ export default function GingerDashboard() {
       <main className="flex-1 flex flex-col md:flex-row relative overflow-hidden">
         <div className="absolute inset-0 bg-terminal-grid z-0"></div>
         
+        {/* ENHANCED MAIN CANVAS */}
         <div className="flex-1 p-4 md:p-12 flex flex-col justify-center items-center z-10">
-          <div className="max-w-2xl w-full bg-[#0d0d0d]/80 backdrop-blur-sm p-8 border border-gray-900 rounded shadow-2xl">
-            <h2 className="text-2xl font-bold mb-3">
+          <div className="max-w-3xl w-full bg-[#0d0d0d]/80 backdrop-blur-sm p-8 md:p-12 border border-gray-900 rounded shadow-2xl">
+            <span className="text-[10px] md:text-xs text-[#FF7B00] uppercase tracking-widest font-bold mb-2 block">Injective Framework Engine</span>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">
               {currentView === 'staking' && 'Staking Auto-Compounder'}
               {currentView === 'sniper' && 'BuyBack Sniper Vault'}
               {currentView === 'yield' && 'Dynamic LP Optimizer'}
             </h2>
-            <button onClick={handleExecuteIntent} className="w-full py-3 bg-[#FF7B00] text-black font-bold text-sm uppercase rounded hover:bg-orange-600 transition-all">Execute Intent</button>
+            
+            {/* RESTORED DESCRIPTIVE TEXT */}
+            <p className="text-xs md:text-sm text-gray-400 mb-8 leading-relaxed min-h-[3rem] md:min-h-[4rem]">
+              {currentView === 'staking' && 'Injective MCP tracking for pending validator allocations. Bundles processing streams into isolated CosmWasm structural chains.'}
+              {currentView === 'sniper' && 'Simulated high-frequency order matrix execution parameters. Generates instant execution boundaries requiring atomic sign confirmation.'}
+              {currentView === 'yield' && 'Queries localized state logs across Mito algorithmic vaults and Neptune debt architecture matrices.'}
+            </p>
+
+            <button onClick={handleExecuteIntent} className="w-full py-3 md:py-4 bg-[#FF7B00] text-black font-bold text-sm md:text-base tracking-widest uppercase rounded hover:bg-orange-600 transition-all shadow-[0_0_20px_rgba(255,123,0,0.2)]">Execute Submodule Intent</button>
           </div>
         </div>
         
-        <div className="w-full md:w-80 flex flex-col bg-black/95 border-t md:border-t-0 md:border-l border-gray-900 h-64 md:h-full z-10 backdrop-blur-md">
+        {/* WIDER TERMINAL FOR DESKTOP (md:w-[400px]) */}
+        <div className="w-full md:w-[400px] flex flex-col bg-black/95 border-t md:border-t-0 md:border-l border-gray-900 h-64 md:h-full z-10 backdrop-blur-md">
           <div className="p-4 border-b border-gray-900 text-[10px] text-gray-500 uppercase tracking-widest font-bold z-20">
              Diagnostic Stream (TCP // 5000)
           </div>
           
-          <div className="flex-1 overflow-y-auto p-3 space-y-2 relative min-h-0">
-                        {/* FIXED LAYER NATIVE ASCII CAT BACKGROUND */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-2 relative min-h-0">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 w-full text-center">
               <pre className="text-[#FF7B00] text-2xl md:text-4xl font-bold opacity-25 block leading-tight select-none drop-shadow-[0_0_12px_rgba(255,123,0,0.4)]">
                 {catWatermark}
               </pre>
             </div>
-
 
             <div className="relative z-10 space-y-2">
               {logs.map((log, index) => {
@@ -129,7 +137,7 @@ export default function GingerDashboard() {
                 const isGinger = upperLog.includes('[GINGER]');
                 
                 return (
-                  <div key={index} className={`font-mono text-[10px] ${isError ? 'text-red-500' : isSuccess ? 'text-[#00FF00]' : isGinger ? 'text-[#FF7B00]' : 'text-gray-400'}`}>
+                  <div key={index} className={`font-mono text-[10px] leading-relaxed ${isError ? 'text-red-500' : isSuccess ? 'text-[#00FF00]' : isGinger ? 'text-[#FF7B00]' : 'text-gray-400'}`}>
                     <span className="opacity-25 mr-2">[{new Date().toLocaleTimeString()}]</span>
                     {log}
                   </div>
