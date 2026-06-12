@@ -122,9 +122,9 @@ export default function GingerDashboard() {
         {/* Background Grid */}
         <div className="absolute inset-0 bg-terminal-grid z-0"></div>
 
-        {/* MASSIVE ASCII Cat Watermark */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5] overflow-hidden">
-          <pre className="text-[#FF7B00] text-[40px] md:text-[80px] leading-[1.1] font-bold animate-cat">
+        {/* OVERLAY ASCII Cat Watermark (Now at z-50, straight on top) */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[50] mix-blend-screen">
+          <pre className="text-[#FF7B00] text-3xl md:text-6xl leading-[1.1] font-bold animate-cat drop-shadow-[0_0_15px_rgba(255,123,0,0.8)]">
 {`
    /\\_/\\
   ( o.o )
@@ -150,7 +150,7 @@ export default function GingerDashboard() {
             
             <button 
               onClick={handleExecuteIntent}
-              className="w-full py-3 md:py-4 bg-[#FF7B00] text-black font-bold text-sm md:text-lg tracking-wider uppercase rounded hover:bg-orange-600 transition-all shadow-[0_0_20px_rgba(255,123,0,0.25)]"
+              className="w-full py-3 md:py-4 bg-[#FF7B00] text-black font-bold text-sm md:text-lg tracking-wider uppercase rounded hover:bg-orange-600 transition-all shadow-[0_0_20px_rgba(255,123,0,0.25)] relative z-20"
             >
               Execute Submodule Intent
             </button>
@@ -163,7 +163,7 @@ export default function GingerDashboard() {
             <span>Terminal Diagnostic Stream</span>
             <span>TCP // 5000</span>
           </div>
-          <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3">
+          <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3 relative z-20">
             {logs.map((log, index) => (
               <div key={index} className={`font-mono text-[10px] md:text-xs leading-relaxed break-words ${log.includes('[ERROR]') || log.includes('[REJECTED]') ? 'text-red-500' : log.includes('SUCCESS') || log.includes('ONLINE') || log.includes('READY') || log.includes('ACTIVE') ? 'text-[#00FF00]' : log.includes('[GINGER]') ? 'text-[#FF7B00]' : 'text-gray-400'}`}>
                 <span className="opacity-25 mr-2 font-sans">[{new Date().toLocaleTimeString()}]</span>
