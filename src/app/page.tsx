@@ -113,12 +113,13 @@ export default function GingerDashboard() {
           </div>
           
           <div className="flex-1 overflow-y-auto p-3 space-y-2 relative min-h-0">
-            {/* FIXED LAYER NATIVE ASCII CAT BACKGROUND */}
+                        {/* FIXED LAYER NATIVE ASCII CAT BACKGROUND */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 w-full text-center">
-              <pre className="text-[#FF7B00] text-xs font-bold opacity-20 block leading-tight select-none">
+              <pre className="text-[#FF7B00] text-2xl md:text-4xl font-bold opacity-25 block leading-tight select-none drop-shadow-[0_0_12px_rgba(255,123,0,0.4)]">
                 {catWatermark}
               </pre>
             </div>
+
 
             <div className="relative z-10 space-y-2">
               {logs.map((log, index) => {
