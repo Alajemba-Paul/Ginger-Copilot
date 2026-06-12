@@ -103,18 +103,18 @@ export default function GingerDashboard() {
           </div>
         </div>
         
-        {/* LOG PANEL FRAMEWORK CONTAINER */}
+                {/* LOG PANEL FRAMEWORK CONTAINER */}
         <div className="w-full md:w-80 flex flex-col bg-black/95 border-t md:border-t-0 md:border-l border-gray-900 h-64 md:h-full z-10 backdrop-blur-md">
           <div className="p-4 border-b border-gray-900 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
              Diagnostic Stream (TCP // 5000)
           </div>
           
           {/* THE LOG CONTENT SCREEN LAYER */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-2 relative">
+          <div className="flex-1 overflow-y-auto p-3 space-y-2 relative min-h-0">
             
-            {/* INLINE ASCII CAT BACKGROUND LAYER */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-              <pre className="text-[#FF7B00] text-xs font-bold opacity-10 leading-tight text-center select-none">
+            {/* FIXED LAYER NATIVE ASCII CAT BACKGROUND */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 w-full text-center">
+              <pre className="text-[#FF7B00] text-xs font-bold opacity-20 block leading-normal select-none">
 {` /\\_/\\
 ( o.o )
  > ^ <`}
@@ -141,7 +141,3 @@ export default function GingerDashboard() {
 
           </div>
         </div>
-      </main>
-    </div>
-  );
-}
